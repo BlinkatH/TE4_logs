@@ -51,3 +51,36 @@ S1(config-line)# **exit**
 S1(config)# **ip ssh version 2**
 
 
+S1#erase startup-config
+S1#delete vlan.dat
+
+S2(config)# interface ___
+S2(config-if)# switchport mode access
+S2(config-if)# switchport access vlan ___
+
+S3(config)# interface ___
+S3(config-if)# mls qos trust cos
+S3(config-if)# switchport voice vlan ___
+
+
+S1(config)# interface range g0/1 - 2 (Eller bara porten som ska användas)
+S1(config-if)# switchport mode trunk
+S1(config-if)# switchport trunk native vlan ___
+
+(Exempel till hur man stänger ner alla onödiga ports)
+S1(config)# **interface range f0/2-5, f0/7-24, g0/1-2**
+S1(config-if-range)# **shutdown**
+S1(config-if-range)# **exit**
+
+S1# **clock set 15:30:00 19 August 2021**
+
+switch: SWITCH_IGNORE_STARTUP_CFG=1
+switch: boot flash:packages.conf
+
+
+S1(config)# **interface range FastEthernet 0/1 - 2**
+S1(config-if-range)# **channel-group 1 mode active** 
+S1(config-if-range)# **exit** 
+S1(config)# **interface port-channel 1** 
+S1(config-if)# **switchport mode trunk** 
+S1(config-if)# **switchport trunk allowed vlan 1,2,20**

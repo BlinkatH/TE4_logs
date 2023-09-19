@@ -44,4 +44,21 @@ R1(config)# **interface loopback 0**
 R1(config-if)# **ip address 10.0.0.1 255.255.255.0** 
 R1(config-if)# **exit**
 
+
+rommon 2 > confreg 0x2142
+rommon 2 > reset
+Router# erase startup-config
+Router# Reload
+
+R1(config)#no ip domain-lookup (eller) no ip domain lookup
+
+R1(config)# int g0/0.10
+R1(config-subif)# encapsulation dot1Q 10
+R1(config-subif)# ip address ___
+
+
+
+
+
+
 [[Switch configurations]]

@@ -16,3 +16,19 @@ Configurerar mest bara undantag.
 Auto-MDIX känner av automatiskt vilket typ av kabel som går mellan olika enheter, crossover och straight.
 
 CRC: Kollar så att datan är samma som den ska vara. Får man CRC så är datan skadad och inte är som den ska.
+
+Ingress: Entering the interface
+Egress: Leaving the interface
+
+Store-and-forward
+Cut-through forwards a frame as soon as the the destimation mac address is determend.
+
+Preamble 8 bytes
+Destination mac address 6 bytes
+Source mac address 6
+Type 2 bytes
+
+När det finns mer än en enhet som kör half-duplex så finns det nu risk för kollision.
+
+Vlan - Router
+802.1Q enkapsulerings metod

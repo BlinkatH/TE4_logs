@@ -32,3 +32,6 @@
 /2 192.0.0.0 
 /1 128.0.0.0 
 /0 0.0.0.0 
+
+[[Switch configurations]]
+[[Router configurations]]
