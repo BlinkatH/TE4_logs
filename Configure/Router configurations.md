@@ -57,6 +57,27 @@ R1(config-subif)# encapsulation dot1Q 10
 R1(config-subif)# ip address ___
 
 
+Router(config)# **ip dhcp excluded-address** _low-address_ [_high-address_]
+
+Router(config)# **ip dhcp pool** _pool-name_  
+Router(dhcp-config)#
+
+R1(config)# **ip dhcp excluded-address 192.168.10.1 192.168.10.9**
+R1(config)# **ip dhcp excluded-address 192.168.10.254** 
+R1(config)# **ip dhcp pool LAN-POOL-1** 
+R1(dhcp-config)# **network 192.168.10.0 255.255.255.0** 
+R1(dhcp-config)# **default-router 192.168.10.1** 
+R1(dhcp-config)# **dns-server 192.168.11.5** 
+R1(dhcp-config)# **domain-name example.com** 
+R1(dhcp-config)# **end** 
+R1#
+
+R1(config)# interface ___
+R1(config-if)# ip helper-address ___
+
+
+
+
 
 
 
