@@ -75,6 +75,78 @@ R1#
 R1(config)# interface ___
 R1(config-if)# ip helper-address ___
 
+<H3>Configure a Stateless DHCPv6 Server</H3>
+R1(config)# **ipv6 unicast-routing**
+R1(config)# **ipv6 dhcp pool IPV6-STATELESS** 
+R1(config-dhcpv6)# **dns-server 2001:db8:acad:1::254** 
+R1(config-dhcpv6)# **domain-name example.com** 
+R1(config-dhcpv6)# **exit** 
+R1(config)# **interface GigabitEthernet0/0/1** 
+R1(config-if)# **description Link to LAN** 
+R1(config-if)# **ipv6 address fe80::1 link-local** 
+R1(config-if)# **ipv6 address 2001:db8:acad:1::1/64** 
+R1(config-if)# **ipv6 nd other-config-flag** 
+R1(config-if)# **ipv6 dhcp server IPV6-STATELESS** 
+R1(config-if)# **no shut** 
+R1(config-if)# **end**
+
+-------------------------------------------------------------------------------
+<H3>Configure a Stateless DHCPv6 Client</H3>
+R3(config)# **ipv6 unicast-routing**
+R3(config)# **interface g0/0/1** 
+R3(config-if)# **ipv6 enable**
+R3(config-if)# **ipv6 address autoconfig** 
+R3(config-if)# **end**
+R3# **show ipv6 interface brief**
+R3# **show ipv6 dhcp interface g0/0/1**
+
+-------------------------------------------------------------------------------
+<H3>Configure a Stateful DHCPv6 Server</H3>
+R1(config)# **ipv6 unicast-routing**
+R1(config)# **ipv6 dhcp pool IPV6-STATEFUL**
+R1(config-dhcpv6)# **address prefix 2001:db8:acad:1::/64** 
+R1(config-dhcpv6)# **dns-server 2001:4860:4860::8888** 
+R1(config-dhcpv6)# **domain-name example.com**
+R1(config)# **interface GigabitEthernet0/0/1** 
+R1(config-if)# **description Link to LAN** 
+R1(config-if)# **ipv6 address fe80::1 link-local** 
+R1(config-if)# **ipv6 address 2001:db8:acad:1::1/64** 
+R1(config-if)# **ipv6 nd managed-config-flag** 
+R1(config-if)# **ipv6 nd prefix default no-autoconfig** 
+R1(config-if)# **ipv6 dhcp server IPV6-STATEFUL** 
+R1(config-if)# **no shut** 
+R1(config-if)# **end**
+C:\PC1> **ipconfig /all**
+
+-------------------------------------------------------------------------------
+<H3>Configure a Stateful DHCPv6 Client</H3>
+R3(config)# **ipv6 unicast-routing**
+R3(config)# **interface g0/0/1** 
+R3(config-if)# **ipv6 enable**
+R3(config-if)# **ipv6 address dhcp** 
+R3(config-if)# **end**
+R3# **show ipv6 interface brief**
+R3# **show ipv6 dhcp interface g0/0/1**
+
+-------------------------------------------------------------------------------
+
+R1(config-if)# **ipv6 nd other-config-flag** 
+R1(config-if)# **end**
+
+R1(config)# **int g0/0/1** 
+R1(config-if)# **ipv6 nd managed-config-flag** 
+R1(config-if)# **ipv6 nd prefix default no-autoconfig** 
+R1(config-if)# **end**
+
+R1(config)# **interface gigabitethernet 0/0/1** 
+R1(config-if)# **ipv6 dhcp relay destination 2001:db8:acad:1::2 G0/0/0** 
+R1(config-if)# **exit**
+
+R1# **show ipv6 dhcp interface**
+R3# **show ipv6 dhcp binding**
+C:\PC1> **ipconfig /all**
+
+
 
 
 
