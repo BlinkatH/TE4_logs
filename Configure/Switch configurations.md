@@ -1,4 +1,6 @@
 
+R1(config)# no ip domain-lookup
+
 S1# **configure terminal**
 S1(config)# **interface vlan 99**
 S1(config-if)# **ip address 172.17.99.11 255.255.255.0**
@@ -84,3 +86,46 @@ S1(config-if-range)# **exit**
 S1(config)# **interface port-channel 1** 
 S1(config-if)# **switchport mode trunk** 
 S1(config-if)# **switchport trunk allowed vlan 1,2,20**
+
+
+<H3>Port Security</H3>
+S1(config)# **interface f0/1**
+S1(config-if)# **switchport mode access**
+S1(config-if)# **switchport port-security**
+S1(config-if)# **end**
+
+----------------------------------------------------------------------------
+
+<H3>Limit and Learn MAC Addresses</H3>
+
+1. **Manually Configured**
+ Switch(config-if)# **switchport port-security mac-address** _mac-address_
+
+2. **Dynamically Learned**
+ Switch(config-if)# **switchport port-security
+
+3. **Dynamically Learned – Sticky**
+ Switch(config-if)# **switchport port-security mac-address sticky**
+
+-------------------------------------------------------------------------------
+
+<H3>Port Security Aging</H3>
+
+Switch(config-if)# **switchport port-security aging** { **static** | **time** _time_ | **type** {**absolute** | **inactivity**}}
+
+exempel:
+S1(config-if)# **switchport port-security aging time 10** 
+S1(config-if)# **switchport port-security aging type inactivity**
+
+![[Pasted image 20231003095627.png]]
+
+-------------------------------------------------------------------------------
+
+<H3>Port Security Violation Modes</H3>
+
+Switch(config-if)# **switchport port-security violation** { **protect** | **restrict** | **shutdown**}
+
+![[Pasted image 20231003100343.png]]
+
+-------------------------------------------------------------------------------
+

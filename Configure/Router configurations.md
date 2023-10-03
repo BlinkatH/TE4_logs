@@ -1,3 +1,4 @@
+S1(config)# no ip domain-lookup
 
 Router# **configure terminal**
 Enter configuration commands, one per line. End with CNTL/Z. 
@@ -146,7 +147,7 @@ R1# **show ipv6 dhcp interface**
 R3# **show ipv6 dhcp binding**
 C:\PC1> **ipconfig /all**
 
-
+R1(config)# ipv6 route (Ipv6 address) gigabitEthernet/FastEthernet
 
 
 
