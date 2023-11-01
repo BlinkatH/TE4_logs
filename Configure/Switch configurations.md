@@ -129,3 +129,15 @@ Switch(config-if)# **switchport port-security violation** { **protect** | **rest
 
 -------------------------------------------------------------------------------
 
+<H3>DAI Configuration</H3>
+S1(config)# **ip dhcp snooping**
+S1(config)# **ip dhcp snooping vlan 10**
+S1(config)# **ip arp inspection vlan 10**
+S1(config)# **interface __**
+S1(config-if)# **ip dhcp snooping trust**
+S1(config-if)# **ip arp inspection trust**
+
+
+S1(config)# **ip arp inspection validate ?**
+  ip       Validate IP addresses
+  src-mac  Validate source MAC address
