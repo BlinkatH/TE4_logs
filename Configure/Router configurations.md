@@ -204,4 +204,11 @@ Ex: ip route 0.0.0.0 0.0.0.0 10.10.10.1
 Router(config)# **ipv6 route ::/0** {_ipv6-address_ | _exit-intf_}
 Ex: ipv6 route ::/0 **2001:db8:acad:2::2**
 
+
+
+
+
+
+
+
 [[Switch configurations]]
